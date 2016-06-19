@@ -1,0 +1,25 @@
+# OS-specific files
+.DS_Store
+.DS_Store?
+*.swp
+*.lock
+profile
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log
+
+# Web storage y dependencias
+.idea
+media
+node_modules
+*.zip
+api
+static
+

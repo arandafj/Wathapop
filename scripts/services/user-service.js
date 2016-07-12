@@ -1,9 +1,9 @@
 angular
     .module("whatapop")
-    .service("UserService", function($http, AppSettings) {
+    .service("UserService", ["$http", "AppSettings", function($http, AppSettings)  {
 
         // Obtenemos los usuarios.
         this.getUsers = function() {
             return $http.get(AppSettings.urlServer + AppSettings.endpointUsers);
         };
-    });
+    }]);

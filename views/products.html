@@ -1,24 +1,11 @@
 <div class="row">
-
     <div class="u-full-width">
-
-        <nav>
-            <!-- lista desplegable  -->
-            <select ng-model="$ctrl.ProductsFilter.category">
-                <option value="">Explora</option>
-                <option ng-repeat="category in $ctrl.categories">{{ ::category.name }}</option>
-            </select>
-
-            <!-- filtro por nombre -->
-            <input type="text" placeholder="Buscar producto..." ng-model="$ctrl.ProductsFilter.name">
-        </nav>
-
-        <!-- lista productos  -->
+        <product-selector on-filter-change="$ctrl.updateFilter(filter)"></product-selector>
         <div class="product-list" ng-repeat="product in $ctrl.products | filter: { name: $ctrl.ProductsFilter.name }
-            | filter:{ category: { name: $ctrl.ProductsFilter.category} }">
+        | filter:{ category: { name: $ctrl.ProductsFilter.category} }">
             <img ng-src="{{ $ctrl.getImageAbsolutePath(product.photos[0]) }}">
-            <a ng-link="['OneProduct', { id: product.id }]">{{ ::product.name }}</a>
+            <label>{{ ::product.name }}</label>
+            <a ng-link="['OneProduct', { id: product.id }]">Ver detalle</a>
         </div>
-
     </div>
 </div>

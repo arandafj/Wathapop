@@ -12,7 +12,7 @@ angular
             component: "oneProduct"
         }],
         templateUrl: "views/raiz.html",
-        controller: function(AppSettings) {
+        controller: ["AppSettings", function(AppSettings) {
             this.home = AppSettings.urlHome;
-        }
+        }]
     });

@@ -1,24 +1,26 @@
+// Componente que muestra lista de productos.
+
 angular
     .module("whatapop")
     .component("products", {
-        templateUrl: "views/products.html", 
-        controller: function(ProductService, CategoryService) {
+        templateUrl: "views/products.html",
+        controller: ["ProductService", function(ProductService) {
             let self = this;
+
+            // Filtro de productos por categoría y nombre.
+            this.ProductsFilter = { category: "", name: "" };
 
             // Obtenemos los productos.
             ProductService.getProducts().then(function (response) {
                 self.products = response.data;
             });
 
-            // Obtenemos categorías.
-            CategoryService.getCategories().then(function (response) {
-                self.categories = response.data;
-            });
-
-            // Obtenemos la ruta absoluta de la imagen.
+            // Obtiene la ruta absoluta de la imagen.
             this.getImageAbsolutePath = ProductService.getImageAbsolutePath;
 
-            // Filtro de productos
-            this.ProductsFilter = {category: "", name: ""};
-        }
+            // Actualiza el filtro.
+            this.updateFilter = function(filter) {
+                this.ProductsFilter = filter;
+            };
+        }]
     });

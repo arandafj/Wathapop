@@ -1,6 +1,7 @@
+
 angular
     .module("whatapop")
-    .service("ProductService", function($http, AppSettings) {
+    .service("ProductService",  ["$http", "AppSettings", function($http, AppSettings)  {
         // Toda funcionalidad que quieras exponer hacia
         // afuera, tiene que estar publicada en this.
 
@@ -18,4 +19,5 @@ angular
         this.getProductById = function(id) {
             return $http.get(AppSettings.urlServer + AppSettings.endpointProducts + "/" + id);
         };
-    });
+        
+    }]);
